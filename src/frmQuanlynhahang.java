@@ -1,8 +1,13 @@
 
+import Dao.NhanVienDAO;
+import Model.NhanVien;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -21,6 +26,7 @@ public class frmQuanlynhahang extends javax.swing.JFrame {
         initComponents();
         WatterMake(txtTimkiem,"Tim Kiem");
         this.setLocationRelativeTo(null);
+        this.showtableNhanvien();
     }
 
     /**
@@ -43,9 +49,9 @@ public class frmQuanlynhahang extends javax.swing.JFrame {
         btnXemchitiet = new javax.swing.JButton();
         btnXuatfile = new javax.swing.JButton();
         tabpnlQuanLy = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
+        pnlNhanvien = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblNhanVien = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -59,7 +65,6 @@ public class frmQuanlynhahang extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quản Lý Nhà Hàng");
         setName(""); // NOI18N
-        setPreferredSize(null);
         setResizable(false);
         setSize(new java.awt.Dimension(721, 406));
 
@@ -157,64 +162,57 @@ public class frmQuanlynhahang extends javax.swing.JFrame {
         tabpnlQuanLy.setMaximumSize(new java.awt.Dimension(546, 332));
         tabpnlQuanLy.setMinimumSize(new java.awt.Dimension(546, 332));
 
-        jPanel2.setBackground(new java.awt.Color(255, 220, 126));
+        pnlNhanvien.setBackground(new java.awt.Color(255, 220, 126));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã NV", "Họ Tên NV", "Giới Tính", "Số ĐT", "Địa Chỉ", "Chức Vụ ", "Lương", "Mật Khẩu"
+                "Mã NV", "Họ Tên NV", "Giới Tính", "Số ĐT", "Địa Chỉ", "Chức Vụ ", "Ca trực", "Lương", "Mật Khẩu"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, false
+                false, false, false, false, false, false, true, true, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
-            jTable1.getColumnModel().getColumn(6).setResizable(false);
-            jTable1.getColumnModel().getColumn(7).setResizable(false);
+        jScrollPane1.setViewportView(tblNhanVien);
+        if (tblNhanVien.getColumnModel().getColumnCount() > 0) {
+            tblNhanVien.getColumnModel().getColumn(0).setResizable(false);
+            tblNhanVien.getColumnModel().getColumn(1).setResizable(false);
+            tblNhanVien.getColumnModel().getColumn(2).setResizable(false);
+            tblNhanVien.getColumnModel().getColumn(3).setResizable(false);
+            tblNhanVien.getColumnModel().getColumn(4).setResizable(false);
+            tblNhanVien.getColumnModel().getColumn(5).setResizable(false);
+            tblNhanVien.getColumnModel().getColumn(7).setResizable(false);
+            tblNhanVien.getColumnModel().getColumn(8).setResizable(false);
         }
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlNhanvienLayout = new javax.swing.GroupLayout(pnlNhanvien);
+        pnlNhanvien.setLayout(pnlNhanvienLayout);
+        pnlNhanvienLayout.setHorizontalGroup(
+            pnlNhanvienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlNhanvienLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        pnlNhanvienLayout.setVerticalGroup(
+            pnlNhanvienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlNhanvienLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        tabpnlQuanLy.addTab("Nhân Viên", jPanel2);
+        tabpnlQuanLy.addTab("Nhân Viên", pnlNhanvien);
 
         jPanel3.setBackground(new java.awt.Color(255, 220, 126));
 
@@ -372,21 +370,21 @@ public class frmQuanlynhahang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JMenu mnDanhmuc;
     private javax.swing.JMenu mnThemmoi;
     private javax.swing.JMenu mnThongke;
+    private javax.swing.JPanel pnlNhanvien;
     private javax.swing.JPanel pnlSapxep;
     private javax.swing.JPanel pnlTimkiem;
     private javax.swing.JPanel pnlTool;
     private javax.swing.JTabbedPane tabpnlQuanLy;
+    private javax.swing.JTable tblNhanVien;
     private javax.swing.JTextField txtTimkiem;
     // End of variables declaration//GEN-END:variables
 
@@ -413,7 +411,32 @@ public class frmQuanlynhahang extends javax.swing.JFrame {
             }
             });
     }
-
+    NhanVienDAO dao = new NhanVienDAO();
+    public void showtableNhanvien()
+    {
+        DefaultTableModel model = (DefaultTableModel) tblNhanVien.getModel();
+        model.setRowCount(0);
+        try {
+            List<NhanVien> list = dao.selectAll();
+            for (NhanVien nv : list) {
+                Object[] row = {
+                    nv.getMaNV(),
+                    nv.getHoTen(),
+                    nv.getGioiTinh(),
+                    nv.getsDt(),
+                    nv.getDiaChi(),
+                    nv.getMaCv(),
+                    nv.getMaCatruc(),
+                    nv.getLuong(),
+                    nv.getMatKhau()
+                };
+                model.addRow(row);
+            }
+        } 
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi Truy Vấn Dữ Liệu !!");
+        }
+    }
     
 
     
