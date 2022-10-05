@@ -25,8 +25,10 @@ public class frmQuanlynhahang extends javax.swing.JFrame {
     public frmQuanlynhahang() {
         initComponents();
         WatterMake(txtTimkiem,"Tim Kiem");
+        
         this.setLocationRelativeTo(null);
         this.showtableNhanvien();
+        jComboBox1.requestFocus();
     }
 
     /**
@@ -390,6 +392,7 @@ public class frmQuanlynhahang extends javax.swing.JFrame {
 
     private void WatterMake(JTextField searchText, String chuoi) {
         searchText.setForeground(Color.GRAY);
+        searchText.setText(chuoi);
         searchText.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) 
