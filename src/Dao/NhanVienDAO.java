@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Dao;
 
 import Helper.ConnectDatabase;
@@ -11,10 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author admin
- */
 public class NhanVienDAO extends MainDao<NhanVien, String>{
     public void insert(NhanVien model){
         String sql="INSERT INTO NhanVien (MaNV, HotenNV, GioiTing, SDT, DiaChi, MaCV, MaCaTruc, Luong, MatKhau) VALUES (?, ?, ?, ?, ?, ? ,? ,? ,?)";

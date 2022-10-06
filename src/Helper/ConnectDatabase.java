@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Helper;
 
 import java.sql.Connection;
@@ -12,10 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author admin
- */
 public class ConnectDatabase {
     private static String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private static String dburl="jdbc:sqlserver://localhost;database=QLNHAHANG_NHOM3";
@@ -45,6 +37,7 @@ public class ConnectDatabase {
         }
         return pstmt;
     }
+    
     public static ResultSet query(String sql, Object...args) {
         try {
             PreparedStatement stmt = ConnectDatabase.getStmt(sql, args);
@@ -55,6 +48,7 @@ public class ConnectDatabase {
             throw new RuntimeException(e);
         }
     }
+    
     public static void update(String sql, Object...args) {
         try {
             PreparedStatement stmt = ConnectDatabase.getStmt(sql, args);
@@ -69,6 +63,7 @@ public class ConnectDatabase {
             throw new RuntimeException(e);
         }
     }
+    
     public static Object value(String sql, Object...args) {
         try {
             ResultSet rs = ConnectDatabase.query(sql, args);
