@@ -13,6 +13,11 @@ public class ConnectDatabase {
     private static String dburl="jdbc:sqlserver://localhost;database=QLNHAHANG_NHOM3";
     private static String username="sa";
     private static String password="123456";
+    
+//    private static String dburl="jdbc:mysql://localhost:3306/QLNHAHANG_NHOM3";
+//    private static String username="root";
+//    private static String password="1234567908";
+    
     static{
         try {            
             Class.forName(driver);
