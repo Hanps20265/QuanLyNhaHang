@@ -1,15 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Dao;
 
 import java.util.List;
 
-/**
- *
- * @author admin
- */
 abstract class MainDao <EntityType, KeyType> {
     abstract public void insert(EntityType entity);
     abstract public void update(EntityType entity);

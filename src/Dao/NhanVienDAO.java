@@ -9,7 +9,7 @@ import java.util.List;
 
 public class NhanVienDAO extends MainDao<NhanVien, String>{
     public void insert(NhanVien model){
-        String sql="INSERT INTO NhanVien (MaNV, HotenNV, GioiTing, SDT, DiaChi, MaCV, MaCaTruc, Luong, MatKhau) VALUES (?, ?, ?, ?, ?, ? ,? ,? ,?)";
+        String sql="INSERT INTO NhanVien (MaNV, HotenNV, GioiTinh, SDT, DiaChi, MaCV, MaCaTruc, Luong, MatKhau) VALUES (?, ?, ?, ?, ?, ? ,? ,? ,?)";
         ConnectDatabase.update(sql, 
                 model.getMaNV(),model.getHoTen(),model.getGioiTinh(),model.getsDt(),model.getDiaChi(),
                 model.getMaCv(),model.getMaCatruc(),model.getLuong(),model.getMatKhau());

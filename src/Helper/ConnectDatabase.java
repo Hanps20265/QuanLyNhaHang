@@ -28,16 +28,20 @@ public class ConnectDatabase {
         PreparedStatement pstmt = null;
         if(sql.trim().startsWith("{")){
             pstmt = connection.prepareCall(sql);
+            // Nếu câu lệnh SQL có tồn tại dấu { (lệnh starsWith trả về true) thì dùng prepareCall gọi PROC
         }
         else{
             pstmt = connection.prepareStatement(sql);
+            // Biên dịch 1 lần câu lệnh SQL
         }
+        
         for(int i=0;i<args.length;i++){
-            pstmt.setObject(i + 1, args[i]);
+            pstmt.setObject(i + 1, args[i]); 
         }
         return pstmt;
     }
     
+    // Truy vấn
     public static ResultSet query(String sql, Object...args) {
         try {
             PreparedStatement stmt = ConnectDatabase.getStmt(sql, args);
@@ -74,6 +78,7 @@ public class ConnectDatabase {
             return null;
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+        } 
+        
     }
 }
