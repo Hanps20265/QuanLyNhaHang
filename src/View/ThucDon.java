@@ -133,6 +133,11 @@ public class ThucDon extends javax.swing.JFrame {
         btnMonGa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/recipe-chicken-icon.png"))); // NOI18N
 
         btnMonHeo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Food-pork-chop-icon.png"))); // NOI18N
+        btnMonHeo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMonHeoActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -368,6 +373,10 @@ public class ThucDon extends javax.swing.JFrame {
         
     }//GEN-LAST:event_tblThucDonMouseClicked
 
+    private void btnMonHeoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonHeoActionPerformed
+        fillanytable("LM08");
+    }//GEN-LAST:event_btnMonHeoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -457,5 +466,19 @@ public class ThucDon extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Lỗi Truy Vấn Dữ Liệu !!");
         }
     }   
+    public void fillanytable(String a)
+    {
+        DefaultTableModel model = (DefaultTableModel) tblThucDon.getModel();
+        model.setRowCount(0);
+        List<Model.ThucDon> thucdon =  dao.selectThitHeo(a);
+        for(int i = 0;i<thucdon.size();i++)
+        {
+            Object[] row = {
+                    thucdon.get(i).getTenMon(),
+                    thucdon.get(i).getGia()
+                };
+            model.addRow(row);
+        }
+    }
     
 }

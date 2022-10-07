@@ -71,9 +71,8 @@ public class ThucDonDAO extends MainDao<ThucDon, String>{
         return list;
     }
     
-    public ThucDon selectThitHeo(String maLoaiMon) {
+    public List<ThucDon> selectThitHeo(String maLoaiMon) {
         String sql="SELECT * FROM MonAn WHERE MaLoaiMon=? ";
-        List<ThucDon> list = this.selectBySql(sql, maLoaiMon);
-        return list.size() > 0 ? list.get(0) : null;
+        return this.selectBySql(sql, maLoaiMon);
     }
 }
