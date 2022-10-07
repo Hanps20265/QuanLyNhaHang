@@ -1,6 +1,7 @@
 package View;
 
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class DatMon extends javax.swing.JFrame {
@@ -10,6 +11,7 @@ public class DatMon extends javax.swing.JFrame {
         pack(); // Đặt kích thước form vừa đủ với nội dung
         setResizable(false); // Không cho phép thay đổi kích thước của form.
         setLocationRelativeTo(null); // Đặt vị trí form xuất hiện về giữa màn hình khi sau khi nhấn run 
+        btnDatMon.setForeground(Color.red);
     }
 
     @SuppressWarnings("unchecked")
@@ -123,6 +125,11 @@ public class DatMon extends javax.swing.JFrame {
         btnSoDoBan.setForeground(new java.awt.Color(0, 204, 255));
         btnSoDoBan.setText("Sơ Đồ Bàn");
         btnSoDoBan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 102), 5));
+        btnSoDoBan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSoDoBanActionPerformed(evt);
+            }
+        });
 
         btnDatMon.setBackground(new java.awt.Color(255, 204, 0));
         btnDatMon.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -135,6 +142,11 @@ public class DatMon extends javax.swing.JFrame {
         btnHuongDan.setForeground(new java.awt.Color(0, 204, 255));
         btnHuongDan.setText("Hướng Dẫn");
         btnHuongDan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 102), 5));
+        btnHuongDan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuongDanActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
@@ -150,6 +162,11 @@ public class DatMon extends javax.swing.JFrame {
         btnDanhMuc.setForeground(new java.awt.Color(0, 204, 255));
         btnDanhMuc.setText("Danh Mục");
         btnDanhMuc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 102), 5));
+        btnDanhMuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDanhMucActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -754,6 +771,19 @@ public class DatMon extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDanhMucActionPerformed
+        new DanhMuc_ThuNgan().setVisible(true);
+        
+    }//GEN-LAST:event_btnDanhMucActionPerformed
+
+    private void btnSoDoBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoDoBanActionPerformed
+        new SoDoBan().setVisible(true);
+    }//GEN-LAST:event_btnSoDoBanActionPerformed
+
+    private void btnHuongDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuongDanActionPerformed
+        new HuongDan().setVisible(true);
+    }//GEN-LAST:event_btnHuongDanActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

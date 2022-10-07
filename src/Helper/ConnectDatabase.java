@@ -18,17 +18,18 @@ public class ConnectDatabase {
 //    private static String username="root";
 //    private static String password="1234567908";
     
-    static{
-        try {            
-            Class.forName(driver);
-        } 
-        catch (ClassNotFoundException ex) {
-            throw new RuntimeException(ex);
-        }
-    }
+//    static{
+//        try {            
+//            Class.forName(driver);
+//        } 
+//        catch (ClassNotFoundException ex) {
+//            throw new RuntimeException(ex);
+//        }
+//    }
     
     
     public static PreparedStatement getStmt(String sql, Object...args) throws SQLException{
+        
         Connection connection = DriverManager.getConnection(dburl, username, password);
         PreparedStatement pstmt = null;
         if(sql.trim().startsWith("{")){
@@ -40,22 +41,22 @@ public class ConnectDatabase {
             // Biên dịch 1 lần câu lệnh SQL
         }
         
-        for(int i=0;i<args.length;i++){
-            pstmt.setObject(i + 1, args[i]); 
+        for(int i=0; i < args.length; i++){
+            pstmt.setObject(i+1, args[i]); 
         }
+        
         return pstmt;
     }
     
-    // Truy vấn
     public static ResultSet query(String sql, Object...args) {
         try {
             PreparedStatement stmt = ConnectDatabase.getStmt(sql, args);
             return stmt.executeQuery();
         } 
-        catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
+        catch (Exception e) {
+            System.out.println("Lỗi: "+ e);
         }
+        return null;
     }
     
     public static void update(String sql, Object...args) {
@@ -68,8 +69,8 @@ public class ConnectDatabase {
                 stmt.getConnection().close();
             }
         } 
-        catch (SQLException e) {
-            throw new RuntimeException(e);
+        catch (Exception e) {
+            System.out.println("Lỗi: "+ e);
         }
     }
     
@@ -80,10 +81,10 @@ public class ConnectDatabase {
                 return rs.getObject(0);
             }
             rs.getStatement().getConnection().close();
-            return null;
+            
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("Lỗi: "+ e);
         } 
-        
+        return null;
     }
 }

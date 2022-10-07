@@ -1,5 +1,8 @@
 package View;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 public class DanhMuc_ThuNgan extends javax.swing.JFrame {
 
     public DanhMuc_ThuNgan() {
@@ -7,6 +10,7 @@ public class DanhMuc_ThuNgan extends javax.swing.JFrame {
         pack(); // Đặt kích thước form vừa đủ với nội dung
         setResizable(false); // Không cho phép thay đổi kích thước của form.
         setLocationRelativeTo(null); // Đặt vị trí form xuất hiện về giữa màn hình khi sau khi nhấn run 
+        btnDanhMuc.setForeground(Color.red);
     }
 
     @SuppressWarnings("unchecked")
@@ -53,18 +57,33 @@ public class DanhMuc_ThuNgan extends javax.swing.JFrame {
         btnSoDoBan.setForeground(new java.awt.Color(0, 204, 255));
         btnSoDoBan.setText("Sơ Đồ Bàn");
         btnSoDoBan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 102), 5));
+        btnSoDoBan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSoDoBanActionPerformed(evt);
+            }
+        });
 
         btnDatMon.setBackground(new java.awt.Color(255, 204, 0));
         btnDatMon.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnDatMon.setForeground(new java.awt.Color(0, 204, 255));
         btnDatMon.setText("Đặt Món");
         btnDatMon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 102), 5));
+        btnDatMon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDatMonActionPerformed(evt);
+            }
+        });
 
         btnHuongDan.setBackground(new java.awt.Color(255, 204, 0));
         btnHuongDan.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnHuongDan.setForeground(new java.awt.Color(0, 204, 255));
         btnHuongDan.setText("Hướng Dẫn");
         btnHuongDan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 102), 5));
+        btnHuongDan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuongDanActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 51, 51));
@@ -118,10 +137,25 @@ public class DanhMuc_ThuNgan extends javax.swing.JFrame {
         jLabel2.setText("CHÀO MỪNG BẠN ĐẾN VỚI NHÀ HÀNG ĐẸP VÀ ĐỘC");
 
         btnSoDoBan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/SkyBlue-Seat-icon.png"))); // NOI18N
+        btnSoDoBan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSoDoBan1ActionPerformed(evt);
+            }
+        });
 
         btnDatMon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Food-Dome-icon.png"))); // NOI18N
+        btnDatMon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDatMon1ActionPerformed(evt);
+            }
+        });
 
         btnHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Windows-View-Detail-icon.png"))); // NOI18N
+        btnHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHoaDonActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -136,10 +170,25 @@ public class DanhMuc_ThuNgan extends javax.swing.JFrame {
         jLabel5.setText("Hóa Đơn");
 
         btnCaTruc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Slideshare-icon.png"))); // NOI18N
+        btnCaTruc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaTrucActionPerformed(evt);
+            }
+        });
 
         btnCaNhan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/personal-information-icon.png"))); // NOI18N
+        btnCaNhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaNhanActionPerformed(evt);
+            }
+        });
 
         btnHuongDan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Blue-Utilities-icon.png"))); // NOI18N
+        btnHuongDan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuongDan1ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -192,9 +241,7 @@ public class DanhMuc_ThuNgan extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)))))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -208,9 +255,8 @@ public class DanhMuc_ThuNgan extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnDatMon1)
-                        .addComponent(btnHoaDon))
+                    .addComponent(btnDatMon1)
+                    .addComponent(btnHoaDon)
                     .addComponent(btnSoDoBan1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -245,6 +291,42 @@ public class DanhMuc_ThuNgan extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDatMon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatMon1ActionPerformed
+        new DatMon().setVisible(true);
+    }//GEN-LAST:event_btnDatMon1ActionPerformed
+
+    private void btnSoDoBan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoDoBan1ActionPerformed
+        new SoDoBan().setVisible(true);
+    }//GEN-LAST:event_btnSoDoBan1ActionPerformed
+
+    private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
+        JOptionPane.showMessageDialog(null, "Hệ thống đang phát triển!");
+    }//GEN-LAST:event_btnHoaDonActionPerformed
+
+    private void btnCaTrucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaTrucActionPerformed
+        JOptionPane.showMessageDialog(null, "Hệ thống đang phát triển!");
+    }//GEN-LAST:event_btnCaTrucActionPerformed
+
+    private void btnCaNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaNhanActionPerformed
+        JOptionPane.showMessageDialog(null, "Hệ thống đang phát triển!");
+    }//GEN-LAST:event_btnCaNhanActionPerformed
+
+    private void btnHuongDan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuongDan1ActionPerformed
+        new HuongDan().setVisible(true);
+    }//GEN-LAST:event_btnHuongDan1ActionPerformed
+
+    private void btnHuongDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuongDanActionPerformed
+        new HuongDan().setVisible(true);
+    }//GEN-LAST:event_btnHuongDanActionPerformed
+
+    private void btnSoDoBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoDoBanActionPerformed
+        new SoDoBan().setVisible(true);
+    }//GEN-LAST:event_btnSoDoBanActionPerformed
+
+    private void btnDatMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatMonActionPerformed
+        new DatMon().setVisible(true);
+    }//GEN-LAST:event_btnDatMonActionPerformed
 
     public static void main(String args[]) {
         

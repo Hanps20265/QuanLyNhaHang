@@ -91,10 +91,7 @@
                           </Group>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="btnHoaDon" linkSize="1" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel5" min="-2" pref="165" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel5" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -110,10 +107,8 @@
                   <Component id="jLabel2" min="-2" pref="46" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="btnDatMon1" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnHoaDon" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btnDatMon1" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnHoaDon" linkSize="2" min="-2" max="-2" attributes="0"/>
                       <Component id="btnSoDoBan1" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -232,6 +227,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSoDoBanActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnDatMon">
               <Properties>
@@ -253,6 +251,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDatMonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnHuongDan">
               <Properties>
@@ -274,6 +275,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHuongDanActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
@@ -322,6 +326,9 @@
               <Image iconType="3" name="/IMG/SkyBlue-Seat-icon.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSoDoBan1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDatMon1">
           <Properties>
@@ -329,6 +336,9 @@
               <Image iconType="3" name="/IMG/Food-Dome-icon.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDatMon1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnHoaDon">
           <Properties>
@@ -336,6 +346,9 @@
               <Image iconType="3" name="/IMG/Windows-View-Detail-icon.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHoaDonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -370,6 +383,9 @@
               <Image iconType="3" name="/IMG/Slideshare-icon.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCaTrucActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCaNhan">
           <Properties>
@@ -377,6 +393,9 @@
               <Image iconType="3" name="/IMG/personal-information-icon.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCaNhanActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnHuongDan1">
           <Properties>
@@ -384,6 +403,9 @@
               <Image iconType="3" name="/IMG/Blue-Utilities-icon.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHuongDan1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>

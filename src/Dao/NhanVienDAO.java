@@ -9,14 +9,16 @@ import java.util.List;
 
 public class NhanVienDAO extends MainDao<NhanVien, String>{
     public void insert(NhanVien model){
-        String sql="INSERT INTO NhanVien (MaNV, HotenNV, GioiTinh, SDT, DiaChi, MaCV, MaCaTruc, Luong, MatKhau) VALUES (?, ?, ?, ?, ?, ? ,? ,? ,?)";
+        String sql="INSERT INTO NhanVien (MaNV, HotenNV, GioiTinh, SDT, DiaChi, MaCV, MaCaTruc, Luong, MatKhau) "
+                + "VALUES (?, ?, ?, ?, ?, ? ,? ,? ,?)";
         ConnectDatabase.update(sql, 
                 model.getMaNV(),model.getHoTen(),model.getGioiTinh(),model.getsDt(),model.getDiaChi(),
                 model.getMaCv(),model.getMaCatruc(),model.getLuong(),model.getMatKhau());
     }
     
     public void update(NhanVien model){
-        String sql="UPDATE NhanVien SET HotenNV=?, GioiTinh=?, SDT=?, Diachi=?, MaCV= ?, MaCaTruc= ?, Luong = ? , Matkhau = ? WHERE MaNV=?";
+        String sql="UPDATE NhanVien SET HotenNV=?, GioiTinh=?, SDT=?, Diachi=?, MaCV= ?, MaCaTruc= ?, "
+                + "Luong = ? , Matkhau = ? WHERE MaNV=?";
         ConnectDatabase.update(sql, 
                 model.getHoTen(),model.getGioiTinh(),model.getsDt(),model.getDiaChi(),
                 model.getMaCv(),model.getMaCatruc(),model.getLuong(),model.getMatKhau(),model.getMaNV());

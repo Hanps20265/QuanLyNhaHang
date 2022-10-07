@@ -1,5 +1,7 @@
 package View;
 
+import java.awt.Color;
+
 public class SoDoBan extends javax.swing.JFrame {
 
     public SoDoBan() {
@@ -7,6 +9,7 @@ public class SoDoBan extends javax.swing.JFrame {
         pack(); // Đặt kích thước form vừa đủ với nội dung
         setResizable(false); // Không cho phép thay đổi kích thước của form.
         setLocationRelativeTo(null); // Đặt vị trí form xuất hiện về giữa màn hình khi sau khi nhấn run 
+        btnSoDoBan.setForeground(Color.red);
     }
 
     @SuppressWarnings("unchecked")
@@ -72,6 +75,11 @@ public class SoDoBan extends javax.swing.JFrame {
         btnDanhMuc.setForeground(new java.awt.Color(0, 204, 255));
         btnDanhMuc.setText("Danh Mục");
         btnDanhMuc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 102), 5));
+        btnDanhMuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDanhMucActionPerformed(evt);
+            }
+        });
 
         btnSoDoBan.setBackground(new java.awt.Color(255, 204, 0));
         btnSoDoBan.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -84,6 +92,11 @@ public class SoDoBan extends javax.swing.JFrame {
         btnDatMon.setForeground(new java.awt.Color(0, 204, 255));
         btnDatMon.setText("Đặt Món");
         btnDatMon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 102), 5));
+        btnDatMon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDatMonActionPerformed(evt);
+            }
+        });
 
         btnHuongDan.setBackground(new java.awt.Color(255, 204, 0));
         btnHuongDan.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -315,8 +328,16 @@ public class SoDoBan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThoat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoat1ActionPerformed
-        // TODO add your handling code here:
+        new HuongDan().setVisible(true);
     }//GEN-LAST:event_btnThoat1ActionPerformed
+
+    private void btnDanhMucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDanhMucActionPerformed
+        new DanhMuc_ThuNgan().setVisible(true);
+    }//GEN-LAST:event_btnDanhMucActionPerformed
+
+    private void btnDatMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatMonActionPerformed
+        new DatMon().setVisible(true);
+    }//GEN-LAST:event_btnDatMonActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
