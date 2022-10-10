@@ -4,6 +4,9 @@
  */
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author admin
@@ -52,5 +55,15 @@ public class HoaDon {
 
     public void setMaKhachhang(String maKhachhang) {
         this.maKhachhang = maKhachhang;
+    }
+    public List<String> getEntity()
+    {
+        List<String> list = new ArrayList<>();
+        list.add("MaHoaDon");
+        list.add("NgayLapHD");
+        list.add("NguoiLapHD");
+        list.add("HinhThucTT");
+        list.add("MaKH");
+        return list;
     }
 }

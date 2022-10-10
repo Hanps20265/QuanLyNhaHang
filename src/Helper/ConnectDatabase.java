@@ -51,10 +51,11 @@ public class ConnectDatabase {
     public static ResultSet query(String sql, Object...args) {
         try {
             PreparedStatement stmt = ConnectDatabase.getStmt(sql, args);
-            return stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
+            return rs;
         } 
         catch (Exception e) {
-            System.out.println("Lỗi: "+ e);
+            System.out.println("Lỗi 1: "+ e);
         }
         return null;
     }

@@ -7,6 +7,7 @@ package Dao;
 import Helper.ConnectDatabase;
 import Model.HoaDon;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,7 +36,7 @@ public class HoaDonDAO extends MainDao<HoaDon, String>{
 
     @Override
     public HoaDon selectById(String id) {
-        String sql="SELECT * FROM HoaDon WHERE MaHD=?";
+        String sql="SELECT * FROM HoaDon WHERE MaHoaDon=?";
         List<HoaDon> list = this.selectBySql(sql, id);
         return list.size() > 0 ? list.get(0) : null;
     }
@@ -48,12 +49,31 @@ public class HoaDonDAO extends MainDao<HoaDon, String>{
 
     @Override
     protected List<HoaDon> selectBySql(String sql, Object... args) {
+        List<HoaDon> list = new ArrayList<HoaDon>();
         try {
             ResultSet rs = null;
-            rs = ConnectDatabase.query(sql, args);
-            for
-        } catch (Exception e) {
-        } finally {
+            try{
+                
+                rs = ConnectDatabase.query(sql, args);
+                while (rs.next()) {                
+                    HoaDon hoadon = new HoaDon();
+                    hoadon.setMaHd(rs.getString("MaHoaDon"));
+                    hoadon.setNguoiLap(rs.getString("NguoiLapHD"));
+                    hoadon.setNgayLap(rs.getString("NgayLapHD"));
+                    hoadon.setHinhThuctt(rs.getString("HinhThucTT"));
+                    hoadon.setMaKhachhang(rs.getString("MaKH"));
+                    list.add(hoadon);
+                }
+            }
+            finally 
+            {
+                rs.getStatement().getConnection().close();
+            }
+        } catch (Exception e) 
+        {
+            System.out.println("Loi: "+e);
         }
+       return list;
+        
     }
 }

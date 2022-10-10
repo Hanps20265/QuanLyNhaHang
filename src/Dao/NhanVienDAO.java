@@ -30,7 +30,7 @@ public class NhanVienDAO extends MainDao<NhanVien, String>{
     }
     
     public List<NhanVien> selectAll(){
-        String sql="SELECT * FROM NhanVien";
+        String sql="SELECT * FROM NhanVien ";
         return this.selectBySql(sql);
     }
     
@@ -39,7 +39,11 @@ public class NhanVienDAO extends MainDao<NhanVien, String>{
         List<NhanVien> list = this.selectBySql(sql, manv);
         return list.size() > 0 ? list.get(0) : null;
     }
-    
+    public List<NhanVien> selectAllbyentity(String entity,String a){
+        String sql="SELECT * FROM NhanVien ORDER BY ?? ";
+        List<NhanVien> list = this.selectBySql(sql, entity,a);
+        return list;
+    }
     protected List<NhanVien> selectBySql(String sql, Object...args){
         List<NhanVien> list=new ArrayList<>();
         try {
