@@ -1,15 +1,28 @@
 package View;
 
+import Controller.MySqlConnection;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JButton;
 
 public class SoDoBan extends javax.swing.JFrame {
-
+    // Khai báo các biến toàn cục
+    Connection con; // Lưu kết nối với Database khi form mở và các thao tác trên form
+    
     public SoDoBan() {
         initComponents();
         pack(); // Đặt kích thước form vừa đủ với nội dung
         setResizable(false); // Không cho phép thay đổi kích thước của form.
         setLocationRelativeTo(null); // Đặt vị trí form xuất hiện về giữa màn hình khi sau khi nhấn run 
         btnSoDoBan.setForeground(Color.red);
+        /* Gọi phương thức getMySqlConnection trong Class MySqlConnection để tạo kết nối Database 
+        và lưu vào biến toàn cục (không cần kết nối nhiều lần)*/
+        con = MySqlConnection.getMySqlConnection("QLNHAHANG_NHOM3");
+        btnDatCho.setForeground(Color.red);
+        btnDatMon.setForeground(Color.gray);
     }
 
     @SuppressWarnings("unchecked")
@@ -24,30 +37,30 @@ public class SoDoBan extends javax.swing.JFrame {
         btnSoDoBan = new javax.swing.JButton();
         btnDatMon = new javax.swing.JButton();
         btnHuongDan = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        btnSoDoBan1 = new javax.swing.JButton();
-        btnDatMon1 = new javax.swing.JButton();
-        btnHoaDon = new javax.swing.JButton();
-        btnCaTruc = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
+        lblTinhTrang = new javax.swing.JLabel();
+        btnBan1 = new javax.swing.JButton();
+        btnBan2 = new javax.swing.JButton();
+        btnBan3 = new javax.swing.JButton();
+        btnBan6 = new javax.swing.JButton();
+        btnBan4 = new javax.swing.JButton();
+        btnBan5 = new javax.swing.JButton();
+        btnBan10 = new javax.swing.JButton();
+        btnBan11 = new javax.swing.JButton();
+        btnBan12 = new javax.swing.JButton();
+        btnBan13 = new javax.swing.JButton();
+        btnBan7 = new javax.swing.JButton();
+        btnBan8 = new javax.swing.JButton();
+        btnBan9 = new javax.swing.JButton();
+        btnBan14 = new javax.swing.JButton();
+        btnBan17 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
+        btnBan19 = new javax.swing.JButton();
+        btnBan20 = new javax.swing.JButton();
+        btnBan15 = new javax.swing.JButton();
+        btnBan16 = new javax.swing.JButton();
+        btnTrong = new javax.swing.JButton();
+        btnDatCho = new javax.swing.JButton();
+        btnDaDat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,58 +154,83 @@ public class SoDoBan extends javax.swing.JFrame {
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Hiện Tại Nhà Hàng Còn 20 Bàn");
+        lblTinhTrang.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
+        lblTinhTrang.setForeground(new java.awt.Color(153, 0, 0));
+        lblTinhTrang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTinhTrang.setText("Hiện Tại Nhà Hàng Còn 20 Bàn");
 
-        btnSoDoBan1.setBackground(new java.awt.Color(255, 255, 255));
-        btnSoDoBan1.setText("Bàn 1");
+        btnBan1.setBackground(new java.awt.Color(255, 255, 255));
+        btnBan1.setText("Bàn 1");
+        btnBan1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBan1MouseClicked(evt);
+            }
+        });
 
-        btnDatMon1.setText("Bàn 2");
+        btnBan2.setText("Bàn 2");
+        btnBan2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBan2MouseClicked(evt);
+            }
+        });
 
-        btnHoaDon.setText("Bàn 3");
+        btnBan3.setText("Bàn 3");
+        btnBan3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBan3MouseClicked(evt);
+            }
+        });
 
-        btnCaTruc.setText("Bàn 6");
+        btnBan6.setText("Bàn 6");
 
-        jButton1.setText("Bàn 4");
+        btnBan4.setText("Bàn 4");
+        btnBan4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBan4MouseClicked(evt);
+            }
+        });
 
-        jButton3.setText("Bàn 5");
+        btnBan5.setText("Bàn 5");
+        btnBan5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBan5MouseClicked(evt);
+            }
+        });
 
-        jButton4.setText("Bàn 10");
+        btnBan10.setText("Bàn 10");
 
-        jButton5.setText("Bàn 11");
+        btnBan11.setText("Bàn 11");
 
-        jButton6.setText("Bàn 12");
+        btnBan12.setText("Bàn 12");
 
-        jButton7.setText("Bàn 13");
+        btnBan13.setText("Bàn 13");
 
-        jButton8.setText("Bàn 7");
+        btnBan7.setText("Bàn 7");
 
-        jButton11.setText("Bàn 8");
+        btnBan8.setText("Bàn 8");
 
-        jButton12.setText("Bàn 9");
+        btnBan9.setText("Bàn 9");
 
-        jButton13.setText("Bàn 14");
+        btnBan14.setText("Bàn 14");
 
-        jButton14.setText("Bàn 17");
+        btnBan17.setText("Bàn 17");
 
         jButton15.setText("Bàn 18");
 
-        jButton16.setText("Bàn 19");
+        btnBan19.setText("Bàn 19");
 
-        jButton17.setText("Bàn 20");
+        btnBan20.setText("Bàn 20");
 
-        jButton9.setText("Bàn 15");
+        btnBan15.setText("Bàn 15");
 
-        jButton10.setText("Bàn 16");
+        btnBan16.setText("Bàn 16");
 
-        jButton18.setText("Còn Trống");
+        btnTrong.setText("Còn Trống");
 
-        jButton19.setText("Đã Đặt Chỗ");
+        btnDatCho.setText("Đã Đặt Chỗ");
 
-        jButton20.setBackground(new java.awt.Color(204, 204, 204));
-        jButton20.setText("Đã Đặt Món");
+        btnDaDat.setBackground(new java.awt.Color(204, 204, 204));
+        btnDaDat.setText("Đã Đặt Món");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -203,64 +241,64 @@ public class SoDoBan extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 883, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTinhTrang, javax.swing.GroupLayout.PREFERRED_SIZE, 883, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 18, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnTrong, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDatCho, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDaDat, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(btnSoDoBan1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBan1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(btnDatMon1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBan2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(btnHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBan3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBan4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnBan5, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                                    .addComponent(btnBan16, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                                    .addComponent(btnBan17, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                                     .addGap(18, 18, 18)
                                     .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButton16, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                                    .addComponent(btnBan19, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(btnBan20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(btnCaTruc, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBan6, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBan7, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBan8, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBan9, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnBan10, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnBan11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnBan12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBan13, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnBan14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(btnBan15, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))))
                         .addGap(19, 19, 19))))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCaTruc, btnDatMon1, btnHoaDon, btnSoDoBan1, jButton1, jButton10, jButton11, jButton12, jButton13, jButton14, jButton15, jButton16, jButton17, jButton3, jButton4, jButton5, jButton6, jButton7, jButton8, jButton9});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnBan1, btnBan10, btnBan11, btnBan12, btnBan13, btnBan14, btnBan15, btnBan16, btnBan17, btnBan19, btnBan2, btnBan20, btnBan3, btnBan4, btnBan5, btnBan6, btnBan7, btnBan8, btnBan9, jButton15});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton18, jButton19, jButton20});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDaDat, btnDatCho, btnTrong});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,47 +307,47 @@ public class SoDoBan extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnDatCho, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDaDat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnTrong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTinhTrang, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(btnSoDoBan1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDatMon1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBan1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBan2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBan3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBan4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBan5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCaTruc, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBan6, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBan10, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBan7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBan8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBan9, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnBan11, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBan12, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBan13, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnBan14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBan15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                    .addComponent(btnBan17, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                     .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnBan19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBan20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBan16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCaTruc, btnDatMon1, btnHoaDon, btnSoDoBan1, jButton1, jButton10, jButton11, jButton12, jButton13, jButton14, jButton15, jButton16, jButton17, jButton3, jButton4, jButton5, jButton6, jButton7, jButton8, jButton9});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnBan1, btnBan10, btnBan11, btnBan12, btnBan13, btnBan14, btnBan15, btnBan16, btnBan17, btnBan19, btnBan2, btnBan20, btnBan3, btnBan4, btnBan5, btnBan6, btnBan7, btnBan8, btnBan9, jButton15});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton18, jButton19, jButton20});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnDaDat, btnDatCho, btnTrong});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -339,6 +377,26 @@ public class SoDoBan extends javax.swing.JFrame {
         new DatMon().setVisible(true);
     }//GEN-LAST:event_btnDatMonActionPerformed
 
+    private void btnBan1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBan1MouseClicked
+        datMon(btnBan1);
+    }//GEN-LAST:event_btnBan1MouseClicked
+
+    private void btnBan2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBan2MouseClicked
+        datMon(btnBan2);
+    }//GEN-LAST:event_btnBan2MouseClicked
+
+    private void btnBan3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBan3MouseClicked
+        datMon(btnBan3);
+    }//GEN-LAST:event_btnBan3MouseClicked
+
+    private void btnBan4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBan4MouseClicked
+        datMon(btnBan4);
+    }//GEN-LAST:event_btnBan4MouseClicked
+
+    private void btnBan5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBan5MouseClicked
+        datMon(btnBan5);
+    }//GEN-LAST:event_btnBan5MouseClicked
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -348,37 +406,74 @@ public class SoDoBan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCaTruc;
+    private javax.swing.JButton btnBan1;
+    private javax.swing.JButton btnBan10;
+    private javax.swing.JButton btnBan11;
+    private javax.swing.JButton btnBan12;
+    private javax.swing.JButton btnBan13;
+    private javax.swing.JButton btnBan14;
+    private javax.swing.JButton btnBan15;
+    private javax.swing.JButton btnBan16;
+    private javax.swing.JButton btnBan17;
+    private javax.swing.JButton btnBan19;
+    private javax.swing.JButton btnBan2;
+    private javax.swing.JButton btnBan20;
+    private javax.swing.JButton btnBan3;
+    private javax.swing.JButton btnBan4;
+    private javax.swing.JButton btnBan5;
+    private javax.swing.JButton btnBan6;
+    private javax.swing.JButton btnBan7;
+    private javax.swing.JButton btnBan8;
+    private javax.swing.JButton btnBan9;
+    private javax.swing.JButton btnDaDat;
     private javax.swing.JButton btnDanhMuc;
+    private javax.swing.JButton btnDatCho;
     private javax.swing.JButton btnDatMon;
-    private javax.swing.JButton btnDatMon1;
-    private javax.swing.JButton btnHoaDon;
     private javax.swing.JButton btnHuongDan;
     private javax.swing.JButton btnSoDoBan;
-    private javax.swing.JButton btnSoDoBan1;
     private javax.swing.JButton btnThoat1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
+    private javax.swing.JButton btnTrong;
     private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblTinhTrang;
     // End of variables declaration//GEN-END:variables
+
+    public PreparedStatement prepareStatement(String sql, Object... args) throws SQLException {
+        PreparedStatement st = con.prepareStatement(sql); // Biên dịch câu lệnh SQL trước
+        for (int i = 0; i < args.length; i++) {
+            st.setObject(i + 1, args[i]);
+        }
+//        System.out.println(st.toString());
+        return st;
+    }
+
+    public ResultSet executeQuery(String sql, Object... args) {
+        try {
+            PreparedStatement stmt = prepareStatement(sql, args);
+            return stmt.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    int tinhTrang = 20;
+    private void datMon(JButton btn) {
+        // Khi đặt món đã thanh toán thì chuyển btn trở về rỗng, màu đen
+        if(btn.getForeground() == Color.red){
+            System.out.println("Vào if");
+            btn.setForeground(Color.gray);
+            new DatMon().setVisible(true);
+            
+        }
+        else{
+            System.out.println("Vào else");
+            btn.setForeground(Color.red);
+            btn.setBackground(Color.blue);
+            tinhTrang--;
+            lblTinhTrang.setText("Hiện Tại Nhà Hàng Còn "+ tinhTrang +" Bàn");
+        }  
+    }
+    
+    
 }
